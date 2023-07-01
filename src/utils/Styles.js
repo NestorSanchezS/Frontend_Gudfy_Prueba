@@ -1,39 +1,14 @@
 import { makeStyles } from "@material-ui/core";
+import { TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   ColorGreen,
   ColorShadow,
   ColorBlack,
   ColorLetterP,
   ColorGreen2,
+  ColorBlack2,
 } from "./constans";
-
-export const stylesModal = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    padding: theme.spacing(3),
-    backgroundColor: ColorShadow,
-    maxWidth: 600,
-    margin: "0 auto",
-    marginTop: 20,
-    border: `2px solid ${ColorGreen}`,
-    borderRadius: "7px",
-  },
-  tittle: {
-    color: ColorGreen,
-    marginBottom: "7px",
-  },
-  subtittle: {
-    color: ColorLetterP,
-  },
-  p: {
-    marginTop: "7px",
-    color: ColorBlack,
-  },
-}));
 
 export const stylesLoading = makeStyles(() => ({
   container: {
@@ -47,9 +22,42 @@ export const stylesLoading = makeStyles(() => ({
   },
 }));
 
+export const StyledTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: ColorLetterP,
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: ColorGreen2,
+    },
+    "&:hover fieldset": {
+      borderColor: ColorGreen,
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: ColorGreen,
+      borderRadius: "6px",
+      borderWidth: 3,
+    },
+  },
+  "& .MuiInputBase-input": {
+    color: ColorLetterP,
+  },
+});
+
+export const stylesTextField = makeStyles(() => ({
+  textField: {
+    borderColor: ColorGreen,
+    fontSize: "100px",
+    color: ColorLetterP,
+    "&:hover": {
+      borderColor: ColorGreen2,
+    },
+  },
+}));
+
 export const stylesCard = makeStyles(() => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 385,
   },
   card: {
     backgroundColor: ColorShadow,
@@ -62,7 +70,7 @@ export const stylesCard = makeStyles(() => ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    borderRadius: "50%",
+    borderRadius: "20%",
   },
   title: {
     color: ColorLetterP,
@@ -84,19 +92,6 @@ export const stylesCard = makeStyles(() => ({
   buttonContainer: {
     textAlign: "center",
     marginBottom: "10px",
-  },
-}));
-
-export const stylesFavorites = makeStyles(() => ({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "80vh",
-  },
-  text: {
-    fontSize: "2rem",
-    color: ColorGreen,
   },
 }));
 

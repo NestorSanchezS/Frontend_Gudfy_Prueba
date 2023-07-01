@@ -22,11 +22,11 @@ const CustomAppBar = ({ children }) => {
           >
             Task
           </Button>
-          {location.pathname === "/task" && (
+          {/* {location.pathname === "/task" && (
             <div style={{ marginLeft: "auto" }}>
               <p>Icon</p>
             </div>
-          )}
+          )} */}
         </Toolbar>
       </AppBar>
       {children}
