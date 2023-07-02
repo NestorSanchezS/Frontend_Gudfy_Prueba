@@ -1,7 +1,7 @@
 import { Grid, Card, CardHeader, IconButton, Button } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ColorShadow, ColorBlack } from "../utils/constans";
+import { ColorShadow, ColorBlack, ColorGreen2 } from "../utils/constans";
 import { stylesCard } from "../utils/Styles";
 
 export const Task = ({ task, updateOrDeleteTodoHandler }) => {
@@ -16,7 +16,7 @@ export const Task = ({ task, updateOrDeleteTodoHandler }) => {
       <Card
         className={`${classes.root}`}
         style={{
-          backgroundColor: ColorShadow,
+          backgroundColor: task.completed ? ColorShadow : ColorGreen2,
         }}
       >
         <CardHeader
@@ -41,14 +41,16 @@ export const Task = ({ task, updateOrDeleteTodoHandler }) => {
           subheader={` ${task.description}`}
         />
         <div className={classes.buttonContainer}>
-          <Button
-            className={classes.bCounter}
-            variant="contained"
-            size="small"
-            onClick={() => updateOrDeleteTodoHandler(task.id, task.completed)}
-          >
-            Mark as {task.completed ? "undone" : "done"}
-          </Button>
+          {task.completed ? null : (
+            <Button
+              className={classes.bCounter}
+              variant="contained"
+              size="small"
+              onClick={() => updateOrDeleteTodoHandler(task.id, task.completed)}
+            >
+              Mark as done
+            </Button>
+          )}
         </div>
       </Card>
     </Grid>

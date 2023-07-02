@@ -32,22 +32,32 @@ export const useTaskHook = () => {
     }
   };
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/api/v1/tasks/${id}/`);
+      setTasks(tasks.filter((task) => task.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const updateTask = (id) => {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            completed: !task.completed,
-          };
-        }
-        return task;
-      })
-    );
+  const updateTask = async (id) => {
+    try {
+      await axios.put(`http://localhost:8000/api/v1/tasks/${id}/complete/`);
+      setTasks(
+        tasks.map((task) => {
+          if (task.id === id) {
+            return {
+              ...task,
+              completed: true,
+            };
+          }
+          return task;
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return [tasks, addTask, deleteTask, updateTask];
