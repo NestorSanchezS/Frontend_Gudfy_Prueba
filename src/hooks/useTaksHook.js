@@ -18,8 +18,18 @@ export const useTaskHook = () => {
     fetchData();
   }, []);
   console.log(tasks);
-  const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+
+  const addTask = async (newTask) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/tasks/",
+        newTask
+      );
+      const createdTask = response.data;
+      setTasks([...tasks, createdTask]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteTask = (id) => {

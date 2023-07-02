@@ -8,7 +8,6 @@ function Tasks() {
 
   const createTaskHandler = (newTaskTitle, newDescription) => {
     const newTask = {
-      id: Date.now(),
       title: newTaskTitle,
       description: newDescription,
       completed: false,
