@@ -23,21 +23,21 @@ function App() {
           }
         />
         <Route
-          path="/task"
-          element={
-            <CustomAppBar>
-              <Container style={{ marginTop: "20px" }}>
-                <Tasks />
-              </Container>
-            </CustomAppBar>
-          }
-        />
-        <Route
           path="/reverse"
           element={
             <CustomAppBar>
               <Container style={{ marginTop: "20px" }}>
                 <ReverseOrder />
+              </Container>
+            </CustomAppBar>
+          }
+        />
+        <Route
+          path="/task"
+          element={
+            <CustomAppBar>
+              <Container style={{ marginTop: "20px" }}>
+                <Tasks />
               </Container>
             </CustomAppBar>
           }

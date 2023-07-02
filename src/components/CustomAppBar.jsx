@@ -17,23 +17,18 @@ const CustomAppBar = ({ children }) => {
           </Button>
           <Button
             component={Link}
-            to="/task"
-            className={classes.buttomCharacters}
-          >
-            Task
-          </Button>
-          <Button
-            component={Link}
             to="/reverse"
             className={classes.buttomCharacters}
           >
             Reverse
           </Button>
-          {/* {location.pathname === "/task" && (
-            <div style={{ marginLeft: "auto" }}>
-              <p>Icon</p>
-            </div>
-          )} */}
+          <Button
+            component={Link}
+            to="/task"
+            className={classes.buttomCharacters}
+          >
+            Task
+          </Button>
         </Toolbar>
       </AppBar>
       {children}

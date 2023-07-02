@@ -1,17 +1,9 @@
-import { useState } from "react";
 import { CustomButton } from "../components/CustomButton";
+import { useCountHook } from "../hooks/useCountHook";
 
 export const Count = () => {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
+  const { increment, decrement, count } = useCountHook();
+  console.log(count);
   return (
     <>
       <div>

@@ -1,33 +1,11 @@
 import React, { useState } from "react";
 import { Button, Grid, Box } from "@mui/material";
-import { StyledTextField } from "../utils/Styles";
+import { StyledTextField, stylesCard } from "../utils/Styles";
+import { useReverseHook } from "../hooks/useReverseHook";
 
 export const ReverseOrder = () => {
-  const [inputText, setInputText] = useState("");
-  const [viewText, setViewText] = useState("");
-
-  function reverseText(text) {
-    const words = text.split(" ");
-    const invertedWords = words.reverse();
-    const result = invertedWords.join(" ");
-    setInputText(result);
-    setViewText(result);
-    return result;
-  }
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (inputText.trim() === "") return;
-    reverseText(inputText);
-    setInputText("");
-  };
-
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    if (name === "reverse") {
-      setInputText(value);
-    }
-  };
+  const { inputText, viewText, changeHandler, submitHandler } =
+    useReverseHook();
   return (
     <form onSubmit={submitHandler} style={{ marginTop: "40px" }}>
       <Box sx={{ maxWidth: 400, margin: "0 auto" }}>

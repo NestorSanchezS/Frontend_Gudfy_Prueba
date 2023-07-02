@@ -22,19 +22,43 @@ function Tasks() {
       deleteTask(id);
     }
   };
+
+  const completedTasks = tasks.filter((task) => task.completed);
+  const pendingTasks = tasks.filter((task) => !task.completed);
+
   return (
-    <Container spacing={2}>
-      <Grid item xs={12}>
-        <FormTask createTaskHandler={createTaskHandler} />
-      </Grid>
-      <Grid container spacing={2}>
-        {tasks.map((task) => (
-          <Task
-            key={task.id}
-            task={task}
-            updateOrDeleteTodoHandler={updateOrDeleteTodoHandler}
-          />
-        ))}
+    <Container>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={6}>
+          <Grid container spacing={2} direction="column">
+            <Grid item>
+              <FormTask createTaskHandler={createTaskHandler} />
+            </Grid>
+            {pendingTasks.map((task) => (
+              <Grid item key={task.id}>
+                <Task
+                  task={task}
+                  updateOrDeleteTodoHandler={updateOrDeleteTodoHandler}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+        {completedTasks.length > 0 && (
+          <Grid item xs={12} sm={6}>
+            <h2>COMPLETED TASK</h2>
+            <Grid container spacing={2} direction="column">
+              {completedTasks.map((task) => (
+                <Grid item key={task.id}>
+                  <Task
+                    task={task}
+                    updateOrDeleteTodoHandler={updateOrDeleteTodoHandler}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );

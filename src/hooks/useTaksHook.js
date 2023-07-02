@@ -17,7 +17,6 @@ export const useTaskHook = () => {
 
     fetchData();
   }, []);
-  console.log(tasks);
 
   const addTask = async (newTask) => {
     try {
@@ -26,7 +25,7 @@ export const useTaskHook = () => {
         newTask
       );
       const createdTask = response.data;
-      setTasks([...tasks, createdTask]);
+      setTasks((prevTasks) => [...prevTasks, createdTask]);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,7 @@ export const useTaskHook = () => {
   const deleteTask = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/api/v1/tasks/${id}/`);
-      setTasks(tasks.filter((task) => task.id !== id));
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -44,8 +43,8 @@ export const useTaskHook = () => {
   const updateTask = async (id) => {
     try {
       await axios.put(`http://localhost:8000/api/v1/tasks/${id}/complete/`);
-      setTasks(
-        tasks.map((task) => {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => {
           if (task.id === id) {
             return {
               ...task,

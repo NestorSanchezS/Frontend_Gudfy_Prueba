@@ -25,7 +25,7 @@ export const FormTask = ({ createTaskHandler }) => {
 
   return (
     <form onSubmit={submitHandler} style={{ marginTop: "40px" }}>
-      <Box sx={{ maxWidth: 400, margin: "0 auto" }}>
+      <Box sx={{ maxWidth: 300, minWidth: 300, margin: "0 auto" }}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12}>
             <StyledTextField
