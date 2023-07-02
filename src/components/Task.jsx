@@ -7,10 +7,6 @@ import { stylesCard } from "../utils/Styles";
 export const Task = ({ task, updateOrDeleteTodoHandler }) => {
   const classes = stylesCard();
 
-  if (task.length === 0) {
-    return <h2>Not Todo Found!</h2>;
-  }
-
   return (
     <Grid item xs={12} sm={6} md={4} key={task.id}>
       <Card
