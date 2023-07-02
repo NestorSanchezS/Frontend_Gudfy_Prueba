@@ -3,7 +3,6 @@ import { useCountHook } from "../hooks/useCountHook";
 
 export const Count = () => {
   const { increment, decrement, count } = useCountHook();
-  console.log(count);
   return (
     <>
       <div>

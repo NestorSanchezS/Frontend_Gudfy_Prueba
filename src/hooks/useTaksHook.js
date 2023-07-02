@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const useTaskHook = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/v1/tasks/");
+        const response = await axios.get(apiUrl);
         const data = response.data;
         setTasks(data);
       } catch (error) {
@@ -20,10 +22,7 @@ export const useTaskHook = () => {
 
   const addTask = async (newTask) => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/tasks/",
-        newTask
-      );
+      const response = await axios.post(`${apiUrl}/`, newTask);
       const createdTask = response.data;
       setTasks((prevTasks) => [...prevTasks, createdTask]);
     } catch (error) {
@@ -33,7 +32,7 @@ export const useTaskHook = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/tasks/${id}/`);
+      await axios.delete(`${apiUrl}/${id}/`);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     } catch (error) {
       console.log(error);
@@ -42,7 +41,7 @@ export const useTaskHook = () => {
 
   const updateTask = async (id) => {
     try {
-      await axios.put(`http://localhost:8000/api/v1/tasks/${id}/complete/`);
+      await axios.put(`${apiUrl}/${id}/complete/`);
       setTasks((prevTasks) =>
         prevTasks.map((task) => {
           if (task.id === id) {
