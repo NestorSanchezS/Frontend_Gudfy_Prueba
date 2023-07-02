@@ -5,6 +5,7 @@ import CustomAppBar from "./components/CustomAppBar";
 import "./App.css";
 import { Count } from "./pages/Count";
 import Tasks from "./pages/Tasks";
+import { ReverseOrder } from "./pages/ReverseOrder";
 
 const queryClient = new QueryClient();
 function App() {
@@ -27,6 +28,16 @@ function App() {
             <CustomAppBar>
               <Container style={{ marginTop: "20px" }}>
                 <Tasks />
+              </Container>
+            </CustomAppBar>
+          }
+        />
+        <Route
+          path="/reverse"
+          element={
+            <CustomAppBar>
+              <Container style={{ marginTop: "20px" }}>
+                <ReverseOrder />
               </Container>
             </CustomAppBar>
           }
