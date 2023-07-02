@@ -3,29 +3,29 @@ import { Button, Grid, Box } from "@mui/material";
 import { StyledTextField } from "../utils/Styles";
 
 export const ReverseOrder = () => {
-  const [text, setText] = useState("");
+  const [inputText, setInputText] = useState("");
   const [viewText, setViewText] = useState("");
 
   function reverseText(text) {
     const words = text.split(" ");
     const invertedWords = words.reverse();
     const result = invertedWords.join(" ");
-    setText(result);
+    setInputText(result);
     setViewText(result);
     return result;
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (text.trim() === "") return;
-    reverseText(text);
-    setText("");
+    if (inputText.trim() === "") return;
+    reverseText(inputText);
+    setInputText("");
   };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     if (name === "reverse") {
-      setText(value);
+      setInputText(value);
     }
   };
   return (
@@ -38,7 +38,7 @@ export const ReverseOrder = () => {
               label="Texto"
               variant="outlined"
               fullWidth
-              value={text}
+              value={inputText}
               onChange={changeHandler}
             />
           </Grid>
@@ -47,7 +47,7 @@ export const ReverseOrder = () => {
               <Button
                 type="submit"
                 variant="contained"
-                disabled={!text.trim()}
+                disabled={!inputText.trim()}
                 sx={{ minWidth: 100 }}
               >
                 Revertir texto
