@@ -58,6 +58,7 @@ export const stylesTextField = makeStyles(() => ({
 export const stylesCard = makeStyles(() => ({
   root: {
     maxWidth: 385,
+    minWidth: 285,
   },
   card: {
     backgroundColor: ColorShadow,

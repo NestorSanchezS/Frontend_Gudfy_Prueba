@@ -11,54 +11,46 @@ export const Task = ({ task, updateOrDeleteTodoHandler }) => {
     return <h2>Not Todo Found!</h2>;
   }
 
-  // return (
-  //   <>
-  //     <div>
-  //       <h3>{task.title}</h3>
-  //       <p>{task.description}</p>
-  //       <button
-  //         onClick={() => updateOrDeleteTodoHandler(task.id, task.completed)}
-  //       >
-  //         Mark as {task.completed ? "undone" : "done"}
-  //       </button>
-  //       {task.completed && (
-  //         <button onClick={() => updateOrDeleteTodoHandler(task.id)}>
-  //           Delete
-  //         </button>
-  //       )}
-  //     </div>
-  //   </>
-  // );
-
   return (
-    <Card
-      className={`${classes.root}`}
-      style={{
-        backgroundColor: ColorShadow,
-        marginTop: "20px",
-      }}
-    >
-      <CardHeader
-        avatar={
-          <div aria-label="recipe" className={classes.avatarContainer}>
-            <img src="/task.png" alt="avatar" className={classes.avatarImg} />
-          </div>
-        }
-        titleTypographyProps={{ className: classes.title }}
-        subheaderTypographyProps={{ className: classes.subheader }}
-        title={task.title}
-        subheader={`${task.description}`}
-      />
-      <button
-        onClick={() => updateOrDeleteTodoHandler(task.id, task.completed)}
+    <Grid item xs={12} sm={6} md={4} key={task.id}>
+      <Card
+        className={`${classes.root}`}
+        style={{
+          backgroundColor: ColorShadow,
+        }}
       >
-        Mark as {task.completed ? "undone" : "done"}
-      </button>
-      {task.completed && (
-        <button onClick={() => updateOrDeleteTodoHandler(task.id)}>
-          Delete
-        </button>
-      )}
-    </Card>
+        <CardHeader
+          avatar={
+            <div aria-label="recipe" className={classes.avatarContainer}>
+              <img src="/task.png" alt="avatar" className={classes.avatarImg} />
+            </div>
+          }
+          action={
+            task.completed ? (
+              <IconButton
+                aria-label="settings"
+                onClick={() => updateOrDeleteTodoHandler(task.id)}
+              >
+                <DeleteIcon style={{ color: ColorBlack }} />
+              </IconButton>
+            ) : null
+          }
+          titleTypographyProps={{ className: classes.title }}
+          subheaderTypographyProps={{ className: classes.subheader }}
+          title={task.title}
+          subheader={` ${task.description}`}
+        />
+        <div className={classes.buttonContainer}>
+          <Button
+            className={classes.bCounter}
+            variant="contained"
+            size="small"
+            onClick={() => updateOrDeleteTodoHandler(task.id, task.completed)}
+          >
+            Mark as {task.completed ? "undone" : "done"}
+          </Button>
+        </div>
+      </Card>
+    </Grid>
   );
 };

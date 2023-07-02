@@ -24,9 +24,11 @@ function Tasks() {
     }
   };
   return (
-    <Container>
-      <Grid alignItems="center">
+    <Container spacing={2}>
+      <Grid item xs={12}>
         <FormTask createTaskHandler={createTaskHandler} />
+      </Grid>
+      <Grid container spacing={2}>
         {tasks.map((task) => (
           <Task
             key={task.id}
